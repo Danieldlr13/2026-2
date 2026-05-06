@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Organizador del semestre</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <header class="app-header">
+            <div class="header-content">
+                <div class="header-copy">
+                    <h1>Organizador del semestre</h1>
+                    <p>Planea materias, horario y eventos desde tu celular.</p>
+                </div>
+                <div class="header-meta">
+                    <span class="chip">2026</span>
+                    <span class="chip">Móvil primero</span>
+                    <span class="chip">Guardado local</span>
+                </div>
+            </div>
+        </header>
+
+        <nav class="screen-nav">
+            <button
+                type="button"
+                class="ghost"
+                id="back-button"
+                data-go="home"
+                aria-label="Volver al inicio"
+            >
+                ◀
+            </button>
+            <div class="screen-title" id="screen-title">Inicio</div>
+        </nav>
+
+        <main class="app-main">
+            <section
+                class="screen active"
+                data-screen="home"
+                data-title="Inicio"
+            >
+                <div class="card">
+                    <h2>¿Qué quieres gestionar?</h2>
+                    <p class="muted">
+                        Selecciona una sección para verla en pantalla completa.
+                    </p>
+                    <div class="home-meta">
+                        <span class="chip subtle">Vista rápida</span>
+                        <span class="chip subtle">Siempre accesible</span>
+                        <span class="chip subtle">Enfoque académico</span>
+                    </div>
+                    <div class="menu-grid">
+                        <button
+                            type="button"
+                            class="menu-card"
+                            data-go="subjects"
+                        >
+                            <span class="menu-icon">📚</span>
+                            <div>
+                                <strong>Materias</strong>
+                                <p class="muted">Profes y notas</p>
+                            </div>
+                        </button>
+                        <button
+                            type="button"
+                            class="menu-card"
+                            data-go="schedule"
+                        >
+                            <span class="menu-icon">🖼️</span>
+                            <div>
+                                <strong>Horario</strong>
+                                <p class="muted">Sube tu imagen</p>
+                            </div>
+                        </button>
+                        <button
+                            type="button"
+                            class="menu-card"
+                            data-go="calendar"
+                        >
+                            <span class="menu-icon">✅</span>
+                            <div>
+                                <strong>Calendario</strong>
+                                <p class="muted">Eventos y tareas</p>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="backup-panel">
+                        <div>
+                            <h3>Respaldo rápido</h3>
+                            <p class="muted">
+                                Exporta tu configuración o impórtala en otro
+                                dispositivo.
+                            </p>
+                        </div>
+                        <div class="backup-actions">
+                            <button
+                                type="button"
+                                class="ghost backup-button"
+                                id="export-config"
+                            >
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path
+                                        d="M12 8v8m0 0l-4-4m4 4l4-4M4 4h16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                                Exportar
+                            </button>
+                            <label
+                                for="import-config"
+                                class="ghost backup-button"
+                            >
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path
+                                        d="M12 16V8m0 0l-4 4m4-4l4 4M4 20h16"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                                Importar
+                            </label>
+                            <input
+                                id="import-config"
+                                class="file-input"
+                                type="file"
+                                accept="application/json"
+                            />
+                            <button
+                                type="button"
+                                class="ghost backup-button"
+                                id="qr-export"
+                            >
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path
+                                        d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4z"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        stroke-linejoin="round"
+                                    />
+                                    <path
+                                        d="M14 14h2v2h-2zM18 14h2v6h-6v-2h4z"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                                QR
+                            </button>
+                            <button
+                                type="button"
+                                class="ghost backup-button"
+                                id="qr-import"
+                            >
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path
+                                        d="M7 7h4v4H7zM13 7h4v4h-4zM7 13h4v4H7z"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        stroke-linejoin="round"
+                                    />
+                                    <path
+                                        d="M17 13h2v4h-4v-2h2z"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.6"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                                Escanear QR
+                            </button>
+                        </div>
+                        <p class="form-message" id="backup-message"></p>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                class="screen"
+                data-screen="subjects"
+                data-title="Materias"
+            >
+                <div class="card">
+                    <h2>Materias</h2>
+                    <form id="subject-form" class="form-grid">
+                        <label>
+                            Nombre
+                            <input
+                                id="subject-name"
+                                type="text"
+                                placeholder="Matemáticas"
+                                required
+                            />
+                        </label>
+                        <label>
+                            Profesor/a
+                            <input
+                                id="subject-professor"
+                                type="text"
+                                placeholder="Dra. Pérez"
+                            />
+                        </label>
+
+                        <label>
+                            Notas
+                            <input
+                                id="subject-notes"
+                                type="text"
+                                placeholder="Parciales cada 3 semanas"
+                            />
+                        </label>
+                        <button type="submit" class="primary">
+                            Agregar materia
+                        </button>
+                    </form>
+                    <div id="subjects-list" class="subjects-list"></div>
+                </div>
+            </section>
+
+            <section class="screen" data-screen="schedule" data-title="Horario">
+                <div class="card">
+                    <h2>Horario en imagen</h2>
+                    <p class="muted">
+                        Sube tu horario como imagen (PNG, JPG o WebP) para
+                        tenerlo siempre a la vista.
+                    </p>
+                    <div
+                        class="upload-actions"
+                        role="group"
+                        aria-label="Acciones de imagen"
+                    >
+                        <label
+                            class="icon-button"
+                            for="schedule-image-input"
+                            aria-label="Subir imagen"
+                            title="Subir imagen"
+                        >
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path
+                                    d="M12 16V7m0 0l-4 4m4-4l4 4M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.6"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </label>
+                        <input
+                            id="schedule-image-input"
+                            class="file-input"
+                            type="file"
+                            accept="image/png, image/jpeg, image/webp"
+                        />
+                        <button
+                            type="button"
+                            class="icon-button danger"
+                            id="schedule-image-remove"
+                            aria-label="Quitar imagen"
+                            title="Quitar imagen"
+                        >
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path
+                                    d="M4 7h16M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2m-7 4v6m4-6v6m4-6v6M7 7l1 12a2 2 0 002 2h4a2 2 0 002-2l1-12"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.6"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="form-message" id="schedule-image-message"></p>
+                    <div class="image-preview" id="schedule-preview"></div>
+                </div>
+            </section>
+
+            <section
+                class="screen"
+                data-screen="calendar"
+                data-title="Calendario"
+            >
+                <div class="card">
+                    <h2>Calendario y eventos</h2>
+                    <div class="calendar-header">
+                        <button
+                            type="button"
+                            class="ghost"
+                            id="prev-month"
+                            aria-label="Mes anterior"
+                        >
+                            ◀
+                        </button>
+                        <div id="calendar-title" class="calendar-title"></div>
+                        <button
+                            type="button"
+                            class="ghost"
+                            id="next-month"
+                            aria-label="Mes siguiente"
+                        >
+                            ▶
+                        </button>
+                    </div>
+                    <div class="calendar-grid" id="calendar-grid"></div>
+
+                    <div class="calendar-actions">
+                        <div class="selected-date" id="selected-date"></div>
+                        <form id="event-form" class="form-grid">
+                            <label>
+                                Fecha
+                                <input id="event-date" type="date" required />
+                            </label>
+                            <label>
+                                Materia
+                                <select id="event-subject"></select>
+                            </label>
+                            <label>
+                                Título
+                                <input
+                                    id="event-title"
+                                    type="text"
+                                    placeholder="Quiz 1"
+                                    required
+                                />
+                            </label>
+                            <label>
+                                Tipo
+                                <select id="event-type">
+                                    <option value="quiz">Quiz</option>
+                                    <option value="parcial">Parcial</option>
+                                    <option value="taller">Taller</option>
+                                </select>
+                            </label>
+                            <button type="submit" class="primary">
+                                Agregar evento
+                            </button>
+                        </form>
+                        <div class="events-list" id="events-list"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div class="modal" id="qr-modal" aria-hidden="true">
+            <div class="modal-overlay" data-modal-close></div>
+            <div
+                class="modal-card"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="qr-modal-title"
+            >
+                <div class="modal-header">
+                    <h3 id="qr-modal-title">Transferir por QR</h3>
+                    <button
+                        type="button"
+                        class="icon-button compact"
+                        data-modal-close
+                        aria-label="Cerrar"
+                        title="Cerrar"
+                    >
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M6 6l12 12M18 6l-12 12"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="qr-panel" id="qr-export-panel">
+                        <p class="muted">
+                            Escanea este QR desde tu celular para importar tus
+                            materias y eventos.
+                        </p>
+                        <div class="qr-code" id="qr-canvas-wrap">
+                            <canvas id="qr-canvas"></canvas>
+                        </div>
+                        <p class="form-message" id="qr-export-message"></p>
+                    </div>
+                    <div class="qr-panel" id="qr-import-panel">
+                        <p class="muted">
+                            Apunta la cámara al QR generado en tu otro
+                            dispositivo.
+                        </p>
+                        <div class="qr-reader" id="qr-reader"></div>
+                        <p class="form-message" id="qr-import-message"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="day-modal" aria-hidden="true">
+            <div class="modal-overlay" data-modal-close></div>
+            <div
+                class="modal-card"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="day-modal-title"
+            >
+                <div class="modal-header">
+                    <h3 id="day-modal-title"></h3>
+                    <button
+                        type="button"
+                        class="icon-button compact"
+                        data-modal-close
+                        aria-label="Cerrar"
+                        title="Cerrar"
+                    >
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M6 6l12 12M18 6l-12 12"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </button>
+                </div>
+                <div class="modal-body" id="day-modal-body"></div>
+            </div>
+        </div>
+
+        <script src="https://unpkg.com/qrious@4.0.2/dist/qrious.min.js"></script>
+        <script src="https://unpkg.com/html5-qrcode@2.3.10/html5-qrcode.min.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>
